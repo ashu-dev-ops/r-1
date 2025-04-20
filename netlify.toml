@@ -9,6 +9,12 @@
   force = true
 
 [[redirects]]
+  from = "/blogs"
+  to = "https://sheetwa22.getpowerblog.com"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/blogs/:splat"
   to = "https://sheetwa22.getpowerblog.com/:splat"
   status = 200
