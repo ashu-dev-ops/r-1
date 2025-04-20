@@ -1,0 +1,15 @@
+[build]
+  command = "npm cache clean --force && npm install --os=linux --ignore-engines  && npm run build"
+  publish = "out"  
+
+[[redirects]]
+  from = "/user/:path*"
+  to = "https://app.sheetwa.com/user/:path*"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/blogs/*"
+  to = "https://sheetwa22.getpowerblog.com/:splat"
+  status = 200
+  force = true
