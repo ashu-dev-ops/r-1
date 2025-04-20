@@ -3,8 +3,14 @@
   publish = "out"  
 
 [[redirects]]
-  from = "/user/:path*"
-  to = "https://app.sheetwa.com/user/:path*"
+  from = "/user/reports/:path"
+  to = "https://app.sheetwa.com/user/reports/:path"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/user/:path"
+  to = "https://app.sheetwa.com/user/:path"
   status = 302
   force = true
 
