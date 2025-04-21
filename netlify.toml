@@ -16,12 +16,12 @@
 
 [[redirects]]
   from = "/blogs"
-  to = "https://sheetwa22.getpowerblog.com/"
+  to = "https://sheetwa222.netlify.app/"
   status = 200
   force = true
 
 [[redirects]]
   from = "/blogs/:splat"
-  to = "https://sheetwa22.getpowerblog.com/:splat"
+  to = "https://sheetwa222.netlify.app/:splat"
   status = 200
   force = true
