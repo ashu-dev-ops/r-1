@@ -2,6 +2,7 @@
   command = "npm cache clean --force && npm install --os=linux --ignore-engines  && npm run build"
   publish = "out"  
 
+
 [[redirects]]
   from = "/user/reports/:path"
   to = "https://app.sheetwa.com/user/reports/:path"
@@ -13,6 +14,13 @@
   to = "https://app.sheetwa.com/user/:path"
   status = 302
   force = true
+
+[[redirects]]
+  from = "/:path"
+  to = "/:path/"
+  status = 301
+  force = true
+  conditions = { Language = ["en"] }
 
 [[edge_functions]]
   path = "/blogs"
