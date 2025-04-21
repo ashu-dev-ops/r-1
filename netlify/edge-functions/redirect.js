@@ -16,7 +16,7 @@ export default async function handler(request) {
     return;
   }
 
-  const externalUrl = `https://sheetwa222.netlify.app/blogs${proxyPath}`;
+  const externalUrl = `https://sheetwa222.netlify.app/${proxyPath}`;
   console.log("externalUrl", externalUrl);
   const proxyRes = await fetch(externalUrl, {
     headers: {
