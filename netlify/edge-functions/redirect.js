@@ -3,6 +3,11 @@ export default async function handler(request) {
   console.log("url", url);
   const path = url.pathname;
   console.log("path", path);
+
+  if (!path.endsWith("/")) {
+    url.pathname = `${path}/`; // Add trailing slash
+    return Response.redirect(url.toString(), 301); // Permanent redirect
+  }
   // Normalize the path
   let proxyPath = path;
 
