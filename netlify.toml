@@ -16,32 +16,31 @@
   status = 302
   force = true
 
-# Enforce trailing slashes on /blogs/* routes
+# Enforce trailing slashes on blog URLs BEFORE anything else
 [[redirects]]
   from = "/blogs/:splat"
   to = "/blogs/:splat/"
   status = 301
   force = true
 
-# Handle the blog root (no trailing slash)
+# Serve blog content ONLY on /blogs/* with trailing slash
+[[redirects]]
+  from = "/blogs/:splat/"
+  to = "https://sheetwa222.netlify.app/:splat/"
+  status = 200
+  force = true
+  conditions = { Host = ["comfy-elf-57eb7e.netlify.app"] }
+
+# Redirect /blogs root with and without trailing slash
 [[redirects]]
   from = "/blogs"
   to = "https://sheetwa222.netlify.app/"
   status = 200
   force = true
 
-# Handle the blog root with trailing slash
 [[redirects]]
   from = "/blogs/"
   to = "https://sheetwa222.netlify.app/"
   status = 200
   force = true
-  conditions = { Host = ["comfy-elf-57eb7e.netlify.app", "www.comfy-elf-57eb7e.netlify.app"] }
-
-# Serve blog URLs with trailing slashes from blog subdomain — only when requested from main site
-[[redirects]]
-  from = "/blogs/:splat/"
-  to = "https://sheetwa222.netlify.app/:splat/"
-  status = 200
-  force = true
-  conditions = { Host = ["comfy-elf-57eb7e.netlify.app", "www.comfy-elf-57eb7e.netlify.app"] }
+  conditions = { Host = ["comfy-elf-57eb7e.netlify.app"] }
