@@ -16,7 +16,7 @@
 
 [[redirects]]
   from = "/blogs"
-  to = "https://sheetwa22.getpowerblog.com"
+  to = "https://sheetwa22.getpowerblog.com/"
   status = 200
   force = true
 
