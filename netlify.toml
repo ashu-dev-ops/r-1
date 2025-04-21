@@ -20,8 +20,10 @@
   status = 200
   force = true
 
+
+
 [[redirects]]
   from = "/blogs/:splat"
-  to = "https://sheetwa222.netlify.app/:splat"
+  to = "https://sheetwa222.netlify.app/blogs/:splat"
   status = 200
   force = true
