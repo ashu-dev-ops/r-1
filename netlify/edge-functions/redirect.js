@@ -23,7 +23,7 @@ export default async function handler(request) {
       "User-Agent": request.headers.get("user-agent") || "",
     },
   });
-
+  console.log("check proxyRes", proxyRes);
   const contentType = proxyRes.headers.get("content-type") || "text/html";
 
   return new Response(await proxyRes.text(), {
