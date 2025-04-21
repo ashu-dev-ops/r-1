@@ -15,6 +15,12 @@
   force = true
 
 [[redirects]]
+  from = "/blogs/:splat"
+  to = "/blogs/:splat/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/blogs"
   to = "https://sheetwa222.netlify.app"
   status = 200
