@@ -1,23 +1,34 @@
 export default async function handler(request) {
   const url = new URL(request.url);
+  const path = url.pathname;
 
-  // Skip if the URL already ends with a slash or contains a file extension
-  if (url.pathname.endsWith("/") || url.pathname.includes(".")) {
+  // Normalize the path
+  let proxyPath = path;
+
+  // Remove leading `/blogs` so we can append to the external URL
+  if (path === "/blogs" || path === "/blogs/") {
+    proxyPath = ""; // Root of the blog
+  } else if (path.startsWith("/blogs/")) {
+    proxyPath = path.replace("/blogs", ""); // e.g., /ashu or /category/post
+  } else {
+    // Not a /blogs route, ignore
     return;
   }
 
-  // Only enforce for /blogs/ paths
-  if (url.pathname.startsWith("/blogs")) {
-    // Add trailing slash to /blogs/ path if it doesn't have one
-    const newUrl = `${url.origin}${url.pathname}/`; // Ensure trailing slash
+  const externalUrl = `https://sheetwa222.netlify.app/blogs${proxyPath}`;
 
-    // Preserve query parameters, if any
-    if (url.search) {
-      return Response.redirect(`${newUrl}${url.search}`, 301);
-    }
-    return Response.redirect(newUrl, 301);
-  }
+  const proxyRes = await fetch(externalUrl, {
+    headers: {
+      "User-Agent": request.headers.get("user-agent") || "",
+    },
+  });
 
-  // For other paths, do not enforce trailing slashes
-  return;
+  const contentType = proxyRes.headers.get("content-type") || "text/html";
+
+  return new Response(await proxyRes.text(), {
+    status: proxyRes.status,
+    headers: {
+      "Content-Type": contentType,
+    },
+  });
 }
