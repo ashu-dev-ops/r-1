@@ -14,18 +14,23 @@
   status = 302
   force = true
 
-[[redirects]]
-  from = "/blogs/:splat"
-  to = "/blogs/:splat/"
-  status = 301
-  force = true
-
+# Handle the blog root
 [[redirects]]
   from = "/blogs"
   to = "https://sheetwa222.netlify.app"
   status = 200
   force = true
 
+
+# Redirect blog URLs without trailing slash to versions with trailing slash
+[[redirects]]
+  from = "/blogs/:splat"
+  to = "https://sheetwa222.netlify.app/:splat/"
+  status = 301
+  conditions = {Path = "/blogs/:splat", PathPattern = "/blogs/[^/]+$"}
+  force = true
+
+# Handle blog URLs with trailing slash
 [[redirects]]
   from = "/blogs/:splat/"
   to = "https://sheetwa222.netlify.app/:splat/"
