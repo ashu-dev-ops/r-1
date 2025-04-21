@@ -1,7 +1,8 @@
 export default async function handler(request) {
   const url = new URL(request.url);
+  console.log("url", url);
   const path = url.pathname;
-
+  console.log("path", path);
   // Normalize the path
   let proxyPath = path;
 
@@ -16,7 +17,7 @@ export default async function handler(request) {
   }
 
   const externalUrl = `https://sheetwa222.netlify.app/blogs${proxyPath}`;
-
+  console.log("externalUrl", externalUrl);
   const proxyRes = await fetch(externalUrl, {
     headers: {
       "User-Agent": request.headers.get("user-agent") || "",
