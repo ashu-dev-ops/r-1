@@ -16,7 +16,7 @@
 
 [[edge_functions]]
   path = "/blogs/*"
-  function = "redirectBlogs"
+  function = "redirect"
 
 
   
