@@ -3,7 +3,17 @@ export default async function handler(request) {
   console.log("url", url);
   const path = url.pathname;
   console.log("path", path);
-
+  if (
+    url.search &&
+    (url.search.includes("teamId=") || url.search.includes("userId="))
+  ) {
+    return new Response("", {
+      status: 404,
+      headers: {
+        "Content-Type": "text/plain",
+      },
+    });
+  }
   if (!path.endsWith("/")) {
     url.pathname = `${path}/`; // Add trailing slash
     return Response.redirect(url.toString(), 301); // Permanent redirect

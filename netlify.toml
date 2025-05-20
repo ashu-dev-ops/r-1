@@ -15,13 +15,6 @@
   status = 302
   force = true
 
-[[redirects]]
-  from = "/:path"
-  to = "/:path/"
-  status = 301
-  force = true
-  conditions = { Language = ["en"] }
-
 [[edge_functions]]
   path = "/blogs"
   function = "redirect"
